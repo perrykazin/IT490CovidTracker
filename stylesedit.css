@@ -1,0 +1,514 @@
+body {
+    margin: 0px;
+    background-color: rgba(0, 130, 101, 1);
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    text-align: left;
+}
+
+h2 {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+	font-weight: bold;
+}
+
+h3 {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+    color: rgba(0, 130, 101, 1);
+}
+
+p 
+{
+	font-size: 12px;
+}
+
+.label
+{
+	font-weight: bold;
+}
+
+td 
+{
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+}
+
+table 
+{
+    padding: 10px;
+}
+
+.chooseattys
+{
+	font-size: 14px;
+	border-collapse: separate;
+	border-spacing: 30px 0;
+}
+
+.chooseattys td
+{
+	font-size: 12px;
+	padding-right: 30px;
+}
+
+.button {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 130, 101, 1);
+    color: rgba(0, 130, 101, 1);
+    padding: 5px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#not_approved {
+    background-color: red;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    padding: 5px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.submit {
+    background-color: rgba(0, 130, 101, 1);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.column1 {
+    float: left;
+    width: 25%;
+}
+.column2 {
+    float: left;
+    width: 30%;
+}
+.column3 {
+    float: left;
+    width: 45%;
+}
+
+#review {
+    background-color: rgba(0, 130, 101, 1);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#send_2 {
+    background-color: rgba(0, 130, 101, 1);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#status {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 130, 101, 1);
+    color: rgba(0, 130, 101, 1);
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#create {
+    background-color: rgba(242, 242, 242, 1);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 130, 101, 1);
+    color: black;
+    padding: 5px;
+    width: 180px;
+    height: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#edit {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+    color: rgba(0, 130, 101, 1);
+    padding: 5px;
+    width: 180px;
+    height: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#send {
+    background-color: rgba(0, 130, 101, 1);
+    border-radius: 10px;
+    border: 2px solid black;
+    color: white;
+    padding: 5px;
+    width: 180px;
+    height: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#history {
+    background-color: rgba(0, 130, 101, 1);
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    padding: 5px;
+    width: 180px;
+    height: 150px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#logo_div {
+    border-width: 0px;
+    position: absolute;
+    left: 56px;
+    top: 57px;
+    width: 315px;
+    height: 80px;
+    display: flex;
+}
+
+#logo {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 315px;
+    height: 80px;
+}
+
+#pillars_div {
+    border-width: 0px;
+    position: absolute;
+    left: 32px;
+    top: 154px;
+    width: 362px;
+    height: 585px;
+    display: flex;
+}
+
+#pillars {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 362px;
+    height: 685px;
+}
+
+#outer {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 0px;
+    height: 0px;
+}
+
+#main_div {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1005px;
+    height: 820px;
+    background: inherit;
+    background-color: rgba(215, 215, 215, 1);
+    box-sizing: border-box;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(121, 121, 121, 1);
+    border-radius: 0px;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+}
+
+#main {
+    border-width: 0px;
+    position: absolute;
+    left: 33px;
+    top: 21px;
+    width: 1003px;
+    height: 816px;
+    display: flex;
+}
+
+#aetns_div {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 642px;
+    height: 131px;
+    background: inherit;
+    background-color: rgba(242, 242, 242, 1);
+    border: none;
+    border-radius: 0px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-family: 'Arial Bold', 'Arial', sans-serif;
+    font-style: normal;
+    color: #000000;
+    text-align: center;
+}
+
+#aetns {
+    border-width: 0px;
+    position: absolute;
+    left: 394px;
+    top: 23px;
+    width: 642px;
+    height: 131px;
+    display: flex;
+    font-family: 'Arial Bold', 'Arial', sans-serif;
+    font-style: normal;
+    color: #000000;
+    text-align: center;
+}
+
+#aetns_text {
+    font-family: 'Merriweather', sans-serif;
+    font-weight: 400;
+    border-width: 0px;
+    word-wrap: break-word;
+    text-transform: none;
+}
+
+#box_div {
+    border-width: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 140px;
+    height: 40px;
+    background: inherit;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(121, 121, 121, 1);
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#box {
+    border-width: 0px;
+    position: absolute;
+    left: 400px;
+    top: 200px;
+    width: 620px;
+    height: 400px;
+    display: flex;
+}
+
+#box .text {
+    position: absolute;
+    align-self: center;
+    padding: 2px 2px 2px 2px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#box_text {
+	border-width: 0px;
+    word-wrap: break-word;
+    text-transform: none;
+}
+
+#type2 option {
+    width: 600px;
+}
+
+#subject 
+{
+	display:block;
+}
+
+.e-mail table {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+  font-size: 12px;
+  width: 620px;
+}
+
+.e-mail td {
+  text-align: left;
+  padding: 8px;
+  width: 620px;
+  margin-right: 200px;
+}
+
+.e-mail_list table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 600px;
+  border-spacing: 2px; 
+}
+
+.e-mail_list td {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.e-mail_list th {
+  text-align: left;
+  padding: 8px;
+}
+
+.e-mail_list tr:nth-child(even) {
+  background-color: white;
+}
+
+
+.MultiCheckBox 
+{
+            border:1px solid #e2e2e2;
+            padding: 5px;
+            border-radius:4px;
+            cursor:pointer;
+        }
+
+        .MultiCheckBox .k-icon{ 
+            font-size: 15px;
+            float: right;
+            font-weight: bolder;
+            margin-top: -7px;
+            height: 10px;
+            width: 14px;
+            color:#787878;
+        } 
+
+        .MultiCheckBoxDetail {
+            display:none;
+            position:absolute;
+            border:1px solid #e2e2e2;
+            overflow-y:hidden;
+        }
+
+        .MultiCheckBoxDetailBody {
+            overflow-y:scroll;
+        }
+
+            .MultiCheckBoxDetail .cont  {
+                clear:both;
+                overflow: hidden;
+                padding: 2px;
+            }
+
+            .MultiCheckBoxDetail .cont:hover  {
+                background-color:#cfcfcf;
+            }
+
+            .MultiCheckBoxDetailBody > div > div {
+                float:left;
+            }
+
+        .MultiCheckBoxDetail>div>div:nth-child(1) {
+        
+        }
+
+        .MultiCheckBoxDetailHeader {
+            overflow:hidden;
+            position:relative;
+            height: 28px;
+            background-color:#3d3d3d;
+        }
+
+            .MultiCheckBoxDetailHeader>input {
+                position: absolute;
+                top: 4px;
+                left: 3px;
+            }
+
+            .MultiCheckBoxDetailHeader>div {
+                position: absolute;
+                top: 5px;
+                left: 24px;
+                color:#fff;
+            }
+
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(0, 130, 101, 1);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+#logout{
+	float: right; 
+	margin-top: -5px; 
+	margin-right: 10px;
+	font-weight: bold;
+}
+<
