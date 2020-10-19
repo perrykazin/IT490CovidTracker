@@ -1,0 +1,68 @@
+body 
+{
+	background-color: lightgrey;
+}
+
+
+#logo
+{
+	background-color: #0C364C;
+  border-color: #0C364C;
+}
+
+#top
+{
+
+  background-color: #C7A357;
+  color: #0C364C;
+ 	font-family: Palatino, Garamond, serif;
+	font-size: 24px;
+	text-align: left;
+  border-color: #C7A357;
+}
+
+img 
+{
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+p
+{
+	font-family: Palatino, Garamond, serif;
+	font-size: 16px;
+	text-align: left;
+  color: #0C364C;
+}
+
+#req 
+{
+  color: red;
+}
+
+div 
+{	
+	width: 100%;
+	padding-right: 150px;	
+	padding-left: 50px;
+	border-style: solid;
+	border-color: lightgrey;
+	border-width: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+  color: #0C364C;
+}
+
+table
+{
+	cellspacing: 2px;
+	cellpadding: 2px;
+	border-width: 1px;
+	font-family: Palatino, Garamond, serif;
+	font-size: 16px;
+  color: #0C364C;
+}
+
+
+	
