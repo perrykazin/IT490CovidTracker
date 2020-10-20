@@ -1,174 +1,135 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-	<head>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
-		<meta charset="utf-8"/>
-		<title>Covid Tracker</title>	
-	</head>
-	
-  <body>
-
-	  <div id="logo">
-     <p></p>
-     <img src="covid.jpg" alt="COVID-19"/>
-	  </div>
+<?php
+// Include config file
+require_once "config.php";
  
-    <div id="top">
-    <p></p>
-    COVID-19 Tracking System
-    <p></p>
-    </div>
-    
-    	<div>
-		
-		<form action="register.php" method="post">
-		
-		<b>Register</b>
-		
-		<table>
-    
-      <tr>
-        <td align = "right">First Name</td>
-        <td><input type="text" id="first_name" name ="first_name" size="50" 
-        required value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" /></td>
-        <span id="first_name"></span>
-        <td style="color:red">REQUIRED</td>
-      </tr>
-			
-			<tr>
-        <td align = "right">Last Name</td>
-        <td><input type="text" id="last_name" name ="last_name" size="50" 
-        required value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" /></td>
-        <span id="last_name"></span>
-        <td style="color:red">REQUIRED</td>
-     </tr>
-     
-     <tr>
-       <td align = "right">Password</td>
-       <td><input type = "password" id="pass1" name ="pass1" size="50" 
-       onblur="isTheFieldEmpty(this, document.getElementById("Password"))" 
-       required value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>" /></td>
-       <span id="pass1"></span>
-       <td style="color:red">REQUIRED</td>
-     </tr>
-     
-     <tr>
-       <td align = "right">Re-Enter Password</td>
-       <td><input type = "password" id="pass2" name ="pass2" size="50" 
-       onblur="isTheFieldEmpty(this, document.getElementById("Password"))" 
-       required value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" /></td>
-       <span id="pass2"></span>
-       <td style="color:red">REQUIRED</td>
-     </tr>
-  
-     <tr>
-       <td align = "right">Patient E-Mail</td>
-       <td><input type="text" id="email" name ="email" size="50" 
-        required value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" /></td>
-        <span id="email"></span>
-        <td style="color:red">REQUIRED</td>
-     </tr>
-     
-     <tr>
-       <td align = "center"><input type = "submit" value = "Register" /></td>	
-     </tr>
-   
-   </table>
-		 
-	</form>
+// Define variables and initialize with empty values
+$username = $password = $confirm_password = "";
+$username_err = $password_err = $confirm_password_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    // Validate username
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter a username.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE username = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            
+            // Set parameters
+            $param_username = trim($_POST["username"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $username_err = "This username is already taken.";
+                } else{
+                    $username = trim($_POST["username"]);
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
 
-	</div>
-  
-	<?php
-  
-    require_once("connection.php");
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
     
-    if ($_SERVER['REQUEST_METHOD']=='POST')
-    {
+    // Validate password
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Please enter a password.";     
+    } elseif(strlen(trim($_POST["password"])) < 6){
+        $password_err = "Password must have atleast 6 characters.";
+    } else{
+        $password = trim($_POST["password"]);
+    }
     
-      $errors = array();
-      
-      if (empty($_POST['first_name']))
-      {
-        $errors[] = 'You forgot to enter your first name.';
-      }
-      else
-      {
-        $fn = trim($_POST['first_name']);
-		  }
-		
-		  if (empty($_POST['last_name'])) 
-      {
-			  $errors[] = 'You forgot to enter your last name.';
-		  }   
-      else 
-      {
-			  $ln = trim($_POST['last_name']);
-		  }
-	
-			if (empty($_POST['email'])) 
-      {
-			  $errors[] = 'You forgot to enter your email address.';
-		  } 
-      else 
-      {
-			$e = trim($_POST['email']);
-		  }
-		
-		  if (!empty($_POST['pass1'])) 
-      {
-			  if ($_POST['pass1'] != $_POST['pass2']) 
-        {
-				  $errors[] = 'Your password did not match the confirmed password.';
-			  } 
-        else 
-        {
-				$p = trim($_POST['pass1']);
-			  }
-		  } 
-      else 
-      {
-			$errors[] = 'You forgot to enter your password.';
-		  }
-		
-		  if (empty($errors)) 
-      { 
-			  $q = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$fn', '$ln', '$e', '$p')";		
-			  $r = @mysqli_query ($dbc, $q); 
-		  	if ($r) 
-        { 
-				  echo '<h1>Registration Complete!</h1>
-			    <p>Thank you!</p><p><br /></p>';	
-				} 
-        else 
-        {
-				  echo '<h1>System Error</h1>
-				  <p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>'; 
-				
-				  echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
-							
-			  }
-      } 			
-			exit();
-			
-		} 
-    else 
-    {
-			echo '<h1>Error!</h1>
-			<p class="error">The following error(s) occurred:<br />';
-			
-      foreach ($errors as $msg) 
-      {
-				echo " - $msg<br />\n";
-			}
-			echo '</p><p>Please try again.</p><p><br /></p>';
-			
-		}
+    // Validate confirm password
+    if(empty(trim($_POST["confirm_password"]))){
+        $confirm_password_err = "Please confirm password.";     
+    } else{
+        $confirm_password = trim($_POST["confirm_password"]);
+        if(empty($password_err) && ($password != $confirm_password)){
+            $confirm_password_err = "Password did not match.";
+        }
+    }
+    
+    // Check input errors before inserting in database
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
+        
+        // Prepare an insert statement
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+         
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
+            
+            // Set parameters
+            $param_username = $username;
+            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Redirect to login page
+                header("location: login.php");
+            } else{
+                echo "Something went wrong. Please try again later.";
+            }
 
-	?>
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
     
-    $dbc->close();
-	</body>
+    // Close connection
+    mysqli_close($link);
+}
+?>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Sign Up</h2>
+        <p>Please fill this form to create an account.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>    
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
+                <span class="help-block"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
+                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-default" value="Reset">
+            </div>
+            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+        </form>
+    </div>    
+</body>
 </html>
