@@ -36,6 +36,6 @@ function logintest($username,$password)
 
 }
 
-echo logintest();
+echo logintest("david", "password");
 
 ?>
