@@ -5,10 +5,10 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
-    $loginauth = rabbitLogin($username, $password);
-	echo $loginauth;
+    $registerauth = rabbitRegister($username, $password);
+	echo $registerauth;
 	
-	if ($loginauth) 
+	if ($registerauth) 
 	{
 		echo 'loggedin';
 		header("Location: test.html");

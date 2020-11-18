@@ -18,17 +18,17 @@
 		</div>
 		
 		<div>
-			<form name="form" action="process_auth.php" method="post">
+			<form name="form" action="register.php" method="post">
 				<table>
 					<tr>
-						<td align="right">User Name</td>
+						<td align="right">Enter a User Name</td>
 						<td><input type="text" id="username" name="username" size="50"></td>
 						<span id="username"></span>
 						<td style="color:red">REQUIRED</td>
 					</tr>
 					
 					<tr>
-						<td align="right">Password</td>
+						<td align="right">Enter a Password</td>
 						<td><input type="password" id="password" name="password" size="50"></td>
 						<span id="password"></span>
 						<td style="color:red">REQUIRED</td>
@@ -40,12 +40,6 @@
 					</tr>
 				</table>
 			</form>
-		</div>
-		
-		<div>
-			<p>If you do not have an account, click the register button below.</p>
-			<form name="form" action="registrationPage.php" method="post">
-			<input type="submit" value="Register" />
 		</div>
 	</body>
 </html>
