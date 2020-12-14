@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<meta charset="utf-8"/>
+		<title>Covid Tracker</title>	
+	</head>
+
+	
+	<script>
+		function checkPassword(form)
+		{
+			password = form.password.value;
+			password2 = form.password2.value;
+			var pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+			
+			if (password == '')
+				alert ("Please enter Password");
+			
+			else if (password2 == '')
+				alert ("Please confirm password");
+			
+			else if (password != password2)
+			{
+				alert("Password did not match - Please try again.")
+				return false;
+			}
+			
+			else if (password.match(pass))
+			{
+				alert("Welcome to Covid-19 Tracker")
+				return true;
+			}				
+		
+			else
+			{
+				alert("Your password must be 6-20 characters, contain at least 1 number, 1 uppercase and 1 lowercase letter.")
+				return false;
+			}
+		}
+	</script>
+	
+	<body>
+		<div class="header">
+		<img src="virus.jpg" alt="COVID"/>
+		<p>Please register to access current information on Covid-19.</p>
+		</div>
+
+		
+		<div id="top">
+		<p></p>
+		</div>
+		
+		<div class="card">
+			<form onSubmit = "return checkPassword(this)" name="form" action="register.php" method="post">
+				<table>
+					<tr>
+						<td align="right">Enter a User Name</td>
+						<td><input type="text" id="username" name="username" size="50"></td>
+						<span id="username"></span>
+						<td style="color:red">REQUIRED</td>
+					</tr>
+					
+					<tr>
+						<td align="right">Enter a Password</td>
+						<td><input type="password" id="password" name="password" size="50"></td>
+						<span id="password"></span>
+						<td style="color:red">REQUIRED</td>
+					</tr>
+					
+					<tr>
+						<td align="right">Confirm Password</td>
+						<td><input type="password" id="password2" name="password2" size="50"></td>
+						<span id="password2"></span>
+						<td style="color:red">REQUIRED</td>
+					</tr>
+					
+					<tr>
+						<td align="right"><input type="reset" value="Reset" /></td>
+						<td align="center"><input type="submit" value="Register" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+</html>

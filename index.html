@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<meta charset="utf-8"/>
+		<title>Covid Tracker</title>	
+	</head>
+<body>
+
+<div class="header">
+  <img src="virus.jpg" alt="COVID"/>
+  <p>Log In for Current Information on Covid-19.</p>
+</div>
+	
+	<div>
+	<p></p>
+	</div>
+	
+	<div>
+    <form class="card" name="form" action="process_auth.php" method="post">
+	
+		<table>
+		<tr>
+			<td align = "right">User Name</td>
+			<td><input type = "text" id="username" name = "username" size="50" /></td>
+			<span id="username"></span>
+			<td style="color:red">REQUIRED</td>
+		</tr>
+		
+		<tr>
+			<td align = "right">Password</td>
+			<td><input type = "password" id="password" name ="password" size="50"/></td>
+			<span id="password"></span>
+			<td style="color:red">REQUIRED</td>
+		</tr>
+		
+		<tr>
+			<td align = "right"><input type = "reset" value = "Reset" /></td>
+			<td align = "center"><input type = "submit" value = "Submit" /></td>
+		</tr>
+		</table>
+	</form>
+	</div>
+	
+	<div class="card">
+		<p>If you do not have an account, click the register button below.</p>
+		<form name="form" action="registrationPage.php" method="post">
+		<input type = "submit" value = "Register" />
+		</form>
+	</div>
+
+</body>
+</html>
