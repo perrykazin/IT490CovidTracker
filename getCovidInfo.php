@@ -1,8 +1,13 @@
 <?php
 
-	include 'trackerclient.php';
+	$servername = "10.1.0.5";
+	$username = "root";
+	$password = "it490Group2!!!";
+	$dbname = "user_credentials";
 	
-	$sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country FROM customers WHERE customerid = ?";
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	
+	$sql = "SELECT * FROM corona_stats";
 
 	$stmt = $mysqli->prepare($sql);
 	$stmt->bind_param("s", $_GET['q']);

@@ -180,27 +180,6 @@
 	  
 	  
       <p>Some text...</p>
-	  <?php
-
-		$servername = "10.1.0.5";
-		$username = "root";
-		$password = "it490Group2!!!";
-		$dbname = "user_credentials";
-		
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		
-		$result = mysql_query("SELECT * FROM corona_stats");
-		if (!$result) {
-		echo 'Could not run query: ' . mysql_error();
-		exit;
-		}
-		$row = mysql_fetch_row($result);
-
-		echo $row[0]; // 42
-		echo $row[1]; // the email value
-		echo "test";
-		?>
-      <p>More text...</p>
 	  
 	  <script>
 	  function showCovidData(str) 
@@ -225,6 +204,29 @@
 		xhttp.send();
 		}
 		</script>
+		
+		<p>More text...</p>
+		
+		<?php
+
+		$servername = "10.1.0.5";
+		$username = "root";
+		$password = "it490Group2!!!";
+		$dbname = "user_credentials";
+		
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		
+		$result = mysql_query("SELECT * FROM corona_stats");
+		if (!$result) {
+		echo 'Could not run query: ' . mysql_error();
+		exit;
+		}
+		$row = mysql_fetch_row($result);
+
+		echo $row[0]; // 42
+		echo $row[1]; // the email value
+		echo "test";
+		?>
 	  
 
 	  
