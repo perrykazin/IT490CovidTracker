@@ -180,6 +180,20 @@
 	  
 	  
       <p>Some text...</p>
+	  <?php
+
+		include 'trackerclient.php';
+		
+		$result = mysql_query("SELECT * FROM corona_stats");
+		if (!$result) {
+		echo 'Could not run query: ' . mysql_error();
+		exit;
+		}
+		$row = mysql_fetch_row($result);
+
+		echo $row[0]; // 42
+		echo $row[1]; // the email value
+		?>
       <p>More text...</p>
 	  
 	  <script>
@@ -238,26 +252,6 @@
 		}
 		?>
 		
-		<?php
-
-		include 'trackerclient.php';
-		
-		$query = "SELECT * FROM coronaStats";
-		$result = mysql_query($query);
-		
-		$firstrow = mysql_fetch_assoc($result);
-		
-		mysql_data_seek($result, 0);
-		
-		while($row = mysql_fetch_assoc($result))
-		{
-			echo "<tr>";
-			foreach($content as $key => $value){
-				echo "<td>" . $value . "</td>";
-        }
-            echo "</tr>";
-		}
-		?>
     </div>
 
   </div>
