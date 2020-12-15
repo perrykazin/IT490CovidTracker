@@ -100,7 +100,7 @@
 
 <div class="row">
   <div class="leftcolumn">
-    <div class="card">
+    <div id="stateInfo" class="card">
 	
 		<h2><span id="stateName"></span></h2>
 	
@@ -180,7 +180,15 @@
 	  
 	  
       <p>Some text...</p>
-	  <span id="stateInfo">
+	  <?php
+
+		$sql = mysqli_fetch_array(rabbitPopulate());
+
+            print "Total Cases: " . $sql["totals_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>";
+		?>
+      <p>More text...</p>
+	  
 	  <script>
 	  function showCovidData(str) 
 	  {
@@ -204,10 +212,8 @@
 		xhttp.send();
 		}
 		</script>
-		</span>
-		
-		<p>More text...</p>
-		
+	  
+
 	  
 	  <?php
 	  
