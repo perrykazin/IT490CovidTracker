@@ -180,23 +180,10 @@
 	  
 	  
       <p>Some text...</p>
-	  <?php
-
-		$rabbitsql = rabbitPopulate();
-		
-		print "$rabbitsql";
-		print $rabbitsql;
-		
-		$sql = mysqli_fetch_array($rabbitsql);
-		
-		print "THIS IS A TEST";
-
-            print "Total Cases: " . $sql["totals_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>";
-		?>
-      <p>More text...</p>
+	  
 	  
 	  <script>
+	  
 	  function showCovidData(str) 
 	  {
 		var xhttp;
@@ -219,6 +206,25 @@
 		xhttp.send();
 		}
 		</script>
+		
+		
+	  <?php
+
+		$rabbitsql = rabbitPopulate();
+		
+		print "$rabbitsql";
+		print $rabbitsql;
+		
+		$sql = mysqli_fetch_array($rabbitsql);
+		
+		print "THIS IS A TEST";
+
+            print "Total Cases: " . $sql["totals_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>";
+		?>
+      <p>More text...</p>
+	  
+	  
 	  
 
 	  
