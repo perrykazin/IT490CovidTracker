@@ -200,7 +200,7 @@
 			}
 		};
 		
-		xhttp.open("GET", "records.php?q="+str, true);
+		xhttp.open("GET", "getCovidInfo.php?q="+str, true);
 		xhttp.send();
 		}
 		</script>

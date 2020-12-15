@@ -13,7 +13,7 @@
 	$stmt->bind_param("s", $_GET['q']);
 	$stmt->execute();
 	$stmt->store_result();
-	$stmt->bind_result($covidcase, $coviddeath);
+	$stmt->bind_result($totals_cases, $total_deaths);
 	$stmt->fetch();
 	$stmt->close();
 	
@@ -21,9 +21,9 @@
 
 	echo "<table>";
 	echo "<tr>";
-	echo "<th>Total Cases</th>";
+	echo "<th>totals_cases</th>";
 	echo "<td>" . $covidcase . "</td>";
-	echo "<th>Total Deaths</th>";
+	echo "<th>total_deaths</th>";
 	echo "<td>" . $coviddeath . "</td>";
 	echo "</tr>";
 	echo "</table>";
@@ -48,3 +48,4 @@
 		}
 	  }
 ?>
+
