@@ -1,51 +1,37 @@
 <?php
+$con=mysqli_connect("10.1.0.5","root","it490Group2!!!","user_credentials");
+// Check connection
+if (mysqli_connect_errno())
+{
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
-	$servername = "10.1.0.5";
-	$username = "root";
-	$password = "it490Group2!!!";
-	$dbname = "user_credentials";
-	
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	
-	$sql = "SELECT * FROM corona_stats";
+$result = mysqli_query($con,"SELECT * FROM corona_stats");
 
-	$stmt = $mysqli->prepare($sql);
-	$stmt->bind_param("s", $_GET['q']);
-	$stmt->execute();
-	$stmt->store_result();
-	$stmt->bind_result($totals_cases, $total_deaths);
-	$stmt->fetch();
-	$stmt->close();
-	
-	print "AJAX works";
+echo "<table border='1'>
+<tr>
+<th>my_timestamp</th>
+<th>totals_cases</th>
+<th>total_deaths</th>
+<th>nj_cases</th>
+<th>nj_deaths</th>
+<th>ny_cases</th>
+<th>ny_deaths</th>
+</tr>";
 
-	echo "<table>";
-	echo "<tr>";
-	echo "<th>totals_cases</th>";
-	echo "<td>" . $covidcase . "</td>";
-	echo "<th>total_deaths</th>";
-	echo "<td>" . $coviddeath . "</td>";
-	echo "</tr>";
-	echo "</table>";
-	
-	  switch ($_POST["value"])
-	  {
-		case "noSelection":
-			$sql = mysqli_fetch_array(rabbitPopulate());
-		  
-			print "Total Cases: " . $sql["total_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>";
-        
+while($row = mysqli_fetch_array($result))
+{
+echo "<tr>";
+echo "<td>" . $row['my_timestamp'] . "</td>";
+echo "<td>" . $row['totals_cases'] . "</td>";
+echo "<td>" . $row['total_deaths'] . "</td>";
+echo "<td>" . $row['nj_cases'] . "</td>";
+echo "<td>" . $row['nj_deaths'] . "</td>";
+echo "<td>" . $row['ny_cases'] . "</td>";
+echo "<td>" . $row['ny_deaths'] . "</td>";
+echo "</tr>";
+}
+echo "</table>";
 
-			break;
-			
-		case "newJersey":
-			$sql = mysqli_fetch_array(rabbitPopulate());
-		  
-			print "Total Cases: " . $sql["nj_cases"]. 
-              "  Total Stats: " . $sql["nj_deaths"]."<br>";
-			  break;
-		}
-	  }
+mysqli_close($con);
 ?>
-
