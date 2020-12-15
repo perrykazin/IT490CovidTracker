@@ -187,7 +187,6 @@
 			print "No Selection";
 			break;
 			
-		case "newJersey":
 			$sql = rabbitPopulate();
 
             $sqlarray = mysqli_fetch_array($sql);
@@ -208,7 +207,6 @@
 			  print "New York";
 
         default:
-            print"Default";
 
             $dbconnect = new mysqli('10.1.0.5','root','it490Group2!!!','user_credentials');
 
@@ -216,10 +214,18 @@
 
             $sqlarray = mysqli_fetch_array($query);
 		  
-			print "Total Cases: " . $sqlarray["totals_cases"]. 
-              "  Total Stats: " . $sqlarray["total_deaths"]."<br>";
-        
-			print "No Selection";
+            print "Total Cases: " . $sqlarray["totals_cases"]."<br>"; 
+            
+            print "Total Stats: " . $sqlarray["total_deaths"]."<br>";
+
+            print "New Jersey Cases: " . $sqlarray["nj_cases"]."<br>";
+
+            print "New Jersey Deaths: " . $sqlarray["nj_deaths"]."<br>";
+
+            print "New York Cases: " . $sqlarray["ny_cases"]."<br>";
+            
+            print "New York Cases: " . $sqlarray["ny_deaths"]."<br>";
+
 			break;
 	    }
 		?>
