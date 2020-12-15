@@ -212,7 +212,7 @@
 	  
 	  include 'trackerclient.php';
 	  
-	  switch (state.value())
+	  switch ($_POST["value"])
 	  {
 		case "noSelection":
 			$sql = mysqli_fetch_array(rabbitPopulate());
@@ -233,6 +233,7 @@
 		
 		default:
 			print"It worked";
+		}
 		}
 		?>
     </div>
