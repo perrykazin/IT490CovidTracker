@@ -20,12 +20,13 @@ function loginpass($username,$password)
 	$count = mysqli_num_rows($query);
 
 	if ($count == 1){
-			echo "User verification successful".PHP_EOL;
-			return true;
-        }else{
-            echo "User verification failed".PHP_EOL;
-        	return false;
-		}
+		echo "User verification successful".PHP_EOL;
+		return true;
+    }
+    else{
+        echo "User verification failed".PHP_EOL;
+        return false;
+    }
 		
     $response = $dbconnect->query($query);
     
@@ -49,9 +50,18 @@ function registerpass($username,$password)
         echo "Successfully connected to database".PHP_EOL;
     }
 
-    $query = mysqli_query($dbconnect,"INSERT INTO users (username, password) VALUES ('$username', '$password')");
-    echo "Account created".PHP_EOL;
-    return true;
+    $checkquery = mysqli_query($dbconnect,"SELECT * FROM users WHERE username = '$username' ");
+	$count = mysqli_num_rows($checkquery);
+
+    if ($count != 0){
+        $query = mysqli_query($dbconnect,"INSERT INTO users (username, password) VALUES ('$username', '$password')");
+        echo "Account created".PHP_EOL;
+        return true;
+    }
+    else {
+        echo "An account with that username already exists".PHP_EOL;
+        return false;
+    }
 
     if ($dbconnect->errno !=0){
         echo "Failed to execute query: ".PHP_EOL;
