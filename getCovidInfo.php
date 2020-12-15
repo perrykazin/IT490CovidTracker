@@ -11,6 +11,8 @@
 	$stmt->bind_result($covidcase, $coviddeath);
 	$stmt->fetch();
 	$stmt->close();
+	
+	print "AJAX works";
 
 	echo "<table>";
 	echo "<tr>";
