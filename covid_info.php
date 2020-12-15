@@ -24,7 +24,8 @@
 		</button>
 		<div class="dropdown-content">
 			<form action="" method="post">
-				<select name="state" id="state">
+				<label for="state">Choose a State:</label>
+				<select name="state" id="state" onchange="javascript:this.form.submit()">
 				<option value="noSelection">Select a State</option>
 				<option value="newJersey">New Jersey</option>
 				<option value="newYork">New York</option>
@@ -78,6 +79,7 @@
 				<option value="wisconsin">Wisconsin</option>
 				<option value="wyoming">Wyoming</option>
 				</select>
+				<input type="submit" value="Submit">
 			</form>
 			
 			<script type="text/javascript">
@@ -138,6 +140,8 @@
 	  
 	  include 'trackerclient.php';
 	  
+	  $message = "";
+	  if(isset($_POST['SubmitButton'])){ //check if form was submitted
 	  switch ($_POST["value"])
 	  {
 		case "noSelection":
@@ -156,7 +160,32 @@
               "  Total Stats: " . $sql["nj_deaths"]."<br>";
 			  break;
 		}
-		?>
+	  }    
+	  ?>
+	  
+/*	  <?php
+	  
+	  include 'trackerclient.php';
+	  
+	  switch ($_POST["value"])
+	  {
+		case "noSelection":
+			$sql = mysqli_fetch_array(rabbitPopulate());
+		  
+			print "Total Cases: " . $sql["total_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>";
+        
+
+			break;
+			
+		case "newJersey":
+			$sql = mysqli_fetch_array(rabbitPopulate());
+		  
+			print "Total Cases: " . $sql["nj_cases"]. 
+              "  Total Stats: " . $sql["nj_deaths"]."<br>";
+			  break;
+		}
+		?>*/
     </div>
 
   </div>
