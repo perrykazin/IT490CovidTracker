@@ -220,7 +220,7 @@
 			print "Total Cases: " . $sql["total_cases"]. 
               "  Total Stats: " . $sql["total_deaths"]."<br>";
         
-
+			print "No Selection";
 			break;
 			
 		case "newJersey":
@@ -229,6 +229,7 @@
 			print "Total Cases: " . $sql["nj_cases"]. 
               "  Total Stats: " . $sql["nj_deaths"]."<br>";
 			  break;
+			  print "New Jersey";
 		
 		default:
 			print"It worked";
