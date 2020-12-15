@@ -176,33 +176,49 @@
 	  
 	  switch ($_POST['state'])
 	  {
-		case "noSelection":
-			$sql = mysqli_fetch_array(rabbitPopulate());
+        case "noSelection":
+            $sql = rabbitPopulate();
+
+			$sqlarray = mysqli_fetch_array($sql));
 		  
-			print "Total Cases: " . $sql["totals_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>";
+			print "Total Cases: " . $sqlarray["totals_cases"]. 
+              "  Total Stats: " . $sqlarray["total_deaths"]."<br>";
         
 			print "No Selection";
 			break;
 			
 		case "newJersey":
-			$sql = mysqli_fetch_array(rabbitPopulate());
-		  
-			print "Total Cases: " . $sql["nj_cases"]. 
-              "  Total Stats: " . $sql["nj_deaths"]."<br>";
+			$sql = rabbitPopulate();
+
+            $sqlarray = mysqli_fetch_array($sql));
+            
+			print "Total Cases: " . $sqlarray["nj_cases"]. 
+              "  Total Stats: " . $sqlarray["nj_deaths"]."<br>";
 			  break;
 			  print "New Jersey";
         
         case "newYork":
-            $sql = mysqli_fetch_array(rabbitPopulate());
+            $sql = rabbitPopulate();
+
+            $sqlarray = mysqli_fetch_array($sql));
             
-            print "Total Cases: " . $sql["ny_cases"]. 
-              "  Total Stats: " . $sql["ny_deaths"]."<br>";
+            print "Total Cases: " . $sqlarray["ny_cases"]. 
+              "  Total Stats: " . $sqlarray["ny_deaths"]."<br>";
 			  break;
 			  print "New York";
 
-		default:
-			print"Default";
+        default:
+            print"Default";
+            
+            $sql = rabbitPopulate();
+
+			$sqlarray = mysqli_fetch_array($sql));
+		  
+			print "Total Cases: " . $sqlarray["totals_cases"]. 
+              "  Total Stats: " . $sqlarray["total_deaths"]."<br>";
+        
+			print "No Selection";
+			break;
 	    }
 		?>
     </div>
