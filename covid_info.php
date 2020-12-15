@@ -23,8 +23,7 @@
 		<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-content">
-			<form action="" method="post">
-				<label for="state">Choose a State:</label>
+			<form action="">
 				<select name="state" id="state" onchange="javascript:this.form.submit()">
 				<option value="noSelection">Select a State</option>
 				<option value="newJersey">New Jersey</option>
@@ -79,7 +78,6 @@
 				<option value="wisconsin">Wisconsin</option>
 				<option value="wyoming">Wyoming</option>
 				</select>
-				<input type="submit" value="Submit">
 			</form>
 			
 			<script type="text/javascript">
@@ -115,7 +113,55 @@
 				newJersey: "New Jersey",
 				newYork: "New York",
 				alabama: "Alabama",
-				alaska: "Alaska"
+				alaska: "Alaska",
+				arizona: "Arizona",
+				arkansas: "Arkansas",
+				california: "California",
+				colorado: "Colorado",
+				connecticut: "Connecticut",
+				delaware: "Delaware",
+				dc: "District of Columbia",
+				florida: "Florida",
+				georgia: "Georgia",
+				hawaii: "Hawaii",
+				idaho: "Idaho",
+				illinois: "Illinois",
+				indiana: "Indiana",
+				iowa: "Iowa",
+				kansas: "Kansas",
+				kentucky: "Kentucky",
+				louisiana: "Louisiana",
+				maine: "Maine",
+				maryland: "Maryland",
+				massachusetts: "Massachusetts",
+				michigan: "Michigan",
+				minnesota: "Minnesota",
+				mississippi: "Mississippi",
+				missouri: "Missouri",
+				montana: "Montana",
+				nebraska: "Nebraska",
+				nevada: "Nevada",
+				newHampshire: "New Hampshire",
+				newMexico: "New Mexico",
+				northCarolina:"North Carolina",
+				northDakota: "North Dakota",
+				ohio: "Ohio",
+				oklahoma: "Oklahoma",
+				oregon: "Oregon",
+				pennsylvania: "Pennsylvania",
+				rhodeIsland: "Rhode Island",
+				southCarolina: "South Carolina",
+				southDakota: "South Dakota",
+				tennessee: "Tennessee",
+				texas: "Texas",
+				utah: "Utah",
+				vermont: "Vermont",
+				virginia: "Virginia",
+				washington: "Washington",
+				westVirginia: "West Virginia",
+				wisconsin: "Wisconsin",
+				wyoming: "Wyoming"
+				
 			}
 			state.onchange = function()
 			{
@@ -136,12 +182,36 @@
       <p>Some text...</p>
       <p>More text...</p>
 	  
+	  <script>
+	  function showCovidData(str) 
+	  {
+		var xhttp;
+		if (str == "")
+		{
+			document.getElementById("stateName").innerHTML = "";
+			return;
+		}
+		
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("txtHint").innerHTML = this.responseText;
+			}
+		};
+		
+		xhttp.open("GET", "getCovidInfo.php?q="+str, true);
+		xhttp.send();
+		}
+		</script>
+	  
+
+	  
 	  <?php
 	  
 	  include 'trackerclient.php';
 	  
-	  $message = "";
-	  if(isset($_POST['SubmitButton'])){ //check if form was submitted
 	  switch ($_POST["value"])
 	  {
 		case "noSelection":
@@ -160,32 +230,7 @@
               "  Total Stats: " . $sql["nj_deaths"]."<br>";
 			  break;
 		}
-	  }    
-	  ?>
-	  
-/*	  <?php
-	  
-	  include 'trackerclient.php';
-	  
-	  switch ($_POST["value"])
-	  {
-		case "noSelection":
-			$sql = mysqli_fetch_array(rabbitPopulate());
-		  
-			print "Total Cases: " . $sql["total_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>";
-        
-
-			break;
-			
-		case "newJersey":
-			$sql = mysqli_fetch_array(rabbitPopulate());
-		  
-			print "Total Cases: " . $sql["nj_cases"]. 
-              "  Total Stats: " . $sql["nj_deaths"]."<br>";
-			  break;
-		}
-		?>*/
+		?>
     </div>
 
   </div>
