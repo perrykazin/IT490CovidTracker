@@ -105,7 +105,31 @@
 			{
 				stateName.innerHTML = states[this.value];
 			}
+			
 		</script>
+		
+		<form method='post' action='' id='myform'>
+		Select State : <select name='state' onchange='submitForm();'> 
+		<option value='noSelection' <?php if(isset($_POST['state']) && $_POST['state'] == 'noSelection')$sql = mysqli_fetch_array(rabbitPopulate());
+		  
+			print "Total Cases: " . $sql["total_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>"; ?> >U.S.</option> 
+		<option value='newJersey' <?php if(isset($_POST['state']) && $_POST['state'] == 'newJersey')$sql = mysqli_fetch_array(rabbitPopulate());
+		  
+			print "Total Cases: " . $sql["nj_cases"]. 
+              "  Total Stats: " . $sql["nj_deaths"]."<br>"; ?> >New Jersey</option>
+		</select> 
+		</form>
+ 
+		<!-- Script --> 
+		<script type='text/javascript'> 
+		function submitForm(){ 
+		// Call submit() method on <form id='myform'>
+		document.getElementById('myform').submit(); 
+		} 
+		</script>
+		
+		
 		
       <h5><span id="datetime"></span></h5>
 	  
