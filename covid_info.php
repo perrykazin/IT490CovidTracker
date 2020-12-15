@@ -182,7 +182,14 @@
       <p>Some text...</p>
 	  <?php
 
-		$sql = mysqli_fetch_array(rabbitPopulate());
+		$rabbitsql = rabbitPopulate();
+		
+		print "$rabbitsql";
+		print $rabbitsql;
+		
+		$sql = mysqli_fetch_array($rabbitsql);
+		
+		print "THIS IS A TEST";
 
             print "Total Cases: " . $sql["totals_cases"]. 
               "  Total Stats: " . $sql["total_deaths"]."<br>";
