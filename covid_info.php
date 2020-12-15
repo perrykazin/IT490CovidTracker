@@ -124,37 +124,23 @@
 	  
 	  switch ($_POST["value"])
 	  {
-		  case "noSelection":
+		case "noSelection":
+			$sql = mysqli_fetch_array(rabbitPopulate());
 		  
-		  $sql = mysqli_fetch_array(rabbitPopulate());
-		  
-		  print "Total Cases: " . $sql["total_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>"
-        } 
-        else 
-        {
-          echo "0 results";
-        }
-        break;
+			print "Total Cases: " . $sql["total_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>";
         
-      case "newJersey":
+
+			break;
+			
+		case "newJersey":
+			$sql = mysqli_fetch_array(rabbitPopulate());
 		  
-		  $sql = mysqli_fetch_array(rabbitPopulate());
-		  
-		  print "Total Cases: " . $sql["nj_cases"]. 
-              "  Total Stats: " . $sql["nj_deaths"]."<br>"
-        } 
-        else 
-        {
-          echo "0 results";
-        }
-        break;
-        
-        
-    }
-    
-    $conn->close();
-	?>
+			print "Total Cases: " . $sql["nj_cases"]. 
+              "  Total Stats: " . $sql["nj_deaths"]."<br>";
+			  break;
+		}
+		?>
     </div>
 
   </div>
