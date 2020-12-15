@@ -100,7 +100,7 @@
 
 <div class="row">
   <div class="leftcolumn">
-    <div class="card">
+    <div id="stateInfo" class="card">
 	
 		<h2><span id="stateName"></span></h2>
 	
@@ -197,7 +197,7 @@
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("txtHint").innerHTML = this.responseText;
+				document.getElementById("stateInfo").innerHTML = this.responseText;
 			}
 		};
 		
@@ -235,6 +235,27 @@
 		
 		default:
 			print"It worked";
+		}
+		?>
+		
+		<?php
+
+		include 'trackerclient.php';
+		
+		$query = "SELECT * FROM coronaStats";
+		$result = mysql_query($query);
+		
+		$firstrow = mysql_fetch_assoc($result);
+		
+		mysql_data_seek($result, 0);
+		
+		while($row = mysql_fetch_assoc($result))
+		{
+			echo "<tr>";
+			foreach($content as $key => $value){
+				echo "<td>" . $value . "</td>";
+        }
+            echo "</tr>";
 		}
 		?>
     </div>
