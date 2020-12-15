@@ -123,21 +123,13 @@
 	  include 'trackerclient.php';
 	  
 	  switch ($_POST["value"])
-    {
-      case "noSelection":
-      
-        $sql = "SELECT `total_cases`, `total_deaths` FROM `corona_stats`";
-    
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) 
-        {
-            while($row = $result->fetch_assoc()) 
-            {
-              print
-              "Total Cases: " . $row["total_cases"]. 
-              "  Total Stats: " . $row["total_deaths"]."<br>";
-            }
+	  {
+		  case "noSelection":
+		  
+		  $sql = mysqli_fetch_array(rabbitPopulate());
+		  
+		  print "Total Cases: " . $sql["total_cases"]. 
+              "  Total Stats: " . $sql["total_deaths"]."<br>"
         } 
         else 
         {
@@ -145,23 +137,12 @@
         }
         break;
         
-      case "2":
-      
-        print "<h1>Dentist Perry's Procedures and Appointments</h1> <br />";
-          
-        $docs = "SELECT * FROM patient_procedures WHERE dentist LIKE 'perry'";
-        
-        $doctor = $conn->query($docs);
-        
-        if ($doctor->num_rows > 0) 
-        {
-            while($row = $doctor->fetch_assoc()) 
-            {
-              print 
-              "  Procedure No.: " . $row["id"].  
-              "  Dental Procedure: " . $row["dental_procedure"]. 
-              "  Date and Time: " . $row["date"]. "  " . $row[time]."<br>";
-            }
+      case "newJersey":
+		  
+		  $sql = mysqli_fetch_array(rabbitPopulate());
+		  
+		  print "Total Cases: " . $sql["nj_cases"]. 
+              "  Total Stats: " . $sql["nj_deaths"]."<br>"
         } 
         else 
         {
@@ -169,77 +150,7 @@
         }
         break;
         
-      case "3":
-          
-        print "<h1>Dentist Puhalka's Procedures and Appointments</h1> <br />";
         
-        $docs = "SELECT * FROM patient_procedures WHERE dentist LIKE 'puhalka'";
-        
-        $doctor = $conn->query($docs);
-        
-        if ($doctor->num_rows > 0) 
-        {
-            while($row = $doctor->fetch_assoc()) 
-            {
-              print 
-              "  Procedure No: " . $row["id"].  
-              "  Dental Procedure: " . $row["dental_procedure"]. 
-              "  Date and Time: " . $row["date"]. "  " . $row[time]."<br>";
-            }
-        } 
-        else 
-        {
-          echo "0 results";
-        }
-        break;
-        
-      case "4":
-      
-        print "<h1>Dentist Davis' Procedures and Appointments</h1> <br />";
-          
-        $docs = "SELECT * FROM patient_procedures WHERE dentist LIKE 'davis'";
-        
-        $doctor = $conn->query($docs);
-        
-        if ($doctor->num_rows > 0) 
-        {
-            while($row = $doctor->fetch_assoc()) 
-            {
-              print 
-              "  Procedure No: " . $row["id"].  
-              "  Dental Procedure: " . $row["dental_procedure"]. 
-              "  Date and Time: " . $row["date"]. "  " . $row[time]."<br>";
-            }
-        } 
-        else 
-        {
-          echo "0 results";
-        }
-        break;
-        
-       case "5":
-       
-         print "<h1>Dentist Friedman's Procedures and Appointments</h1> <br />";
-         
-         $docs = "SELECT * FROM patient_procedures WHERE dentist LIKE 'friedman'";
-         
-         $doctor = $conn->query($docs);
-         
-         if ($doctor->num_rows > 0)
-         {
-            while($row = $doctor->fetch_assoc()) 
-            {
-              print
-              "  Procedure No: " . $row["id"].  
-              "  Dental Procedure: " . $row["dental_procedure"]. 
-              "  Date and Time: " . $row["date"]. "  " . $row[time]."<br>";
-            }
-        } 
-        else 
-        {
-          echo "0 results";
-        }
-        break;
     }
     
     $conn->close();
