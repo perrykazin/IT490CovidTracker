@@ -23,8 +23,8 @@
 		<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-content">
-			<form action="" method="POST">
-				<select name="state" id="state" onchange="showCovidData(this.value); javascript:this.form.submit()">
+			<form action="" method="post">
+				<select name="state" id="state" onchange="javascript:this.form.submit()">
 				<option value="noSelection">Select a State</option>
 				<option value="newJersey">New Jersey</option>
 				<option value="newYork">New York</option>
@@ -80,17 +80,6 @@
 				</select>
 			</form>
 			
-			<script type="text/javascript">
-			
-				jQuery(function() 
-				{
-					jQuery('#state').change(function() 
-					{
-						this.form.submit();
-					});
-				});
-			</script>
-			
 		</div>
 		
 		</div>
@@ -100,7 +89,7 @@
 
 <div class="row">
   <div class="leftcolumn">
-    <div id="stateInfo" class="card">
+    <div class="card">
 	
 		<h2><span id="stateName"></span></h2>
 	
@@ -180,66 +169,17 @@
 	  
 	  
       <p>Some text...</p>
-	  
-	  
-	  <script>
-	  
-	  function showCovidData(str) 
-	  {
-		var xhttp;
-		if (str == "")
-		{
-			document.getElementById("states").innerHTML = "";
-			return;
-		}
-		
-		xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("stateInfo").innerHTML = this.responseText;
-			}
-		};
-		
-		xhttp.open("GET", "getCovidInfo.php?q="+str, true);
-		xhttp.send();
-		}
-		</script>
-		
-		
-	  <?php
 
-		$rabbitsql = rabbitPopulate();
-		
-		print "$rabbitsql";
-		print $rabbitsql;
-		
-		$sql = mysqli_fetch_array($rabbitsql);
-		
-		print "THIS IS A TEST";
-
-            print "Total Cases: " . $sql["totals_cases"]. 
-              "  Total Stats: " . $sql["total_deaths"]."<br>";
-		?>
-      <p>More text...</p>
-	  
-	  
-	  
-
-	  
 	  <?php
 	  
 	  include 'trackerclient.php';
 	  
-	  $demonstrate = "noSelection";
-	  
-	  switch ($demonstrate)
+	  switch ($_POST['state'])
 	  {
 		case "noSelection":
 			$sql = mysqli_fetch_array(rabbitPopulate());
 		  
-			print "Total Cases: " . $sql["total_cases"]. 
+			print "Total Cases: " . $sql["totals_cases"]. 
               "  Total Stats: " . $sql["total_deaths"]."<br>";
         
 			print "No Selection";
@@ -252,12 +192,19 @@
               "  Total Stats: " . $sql["nj_deaths"]."<br>";
 			  break;
 			  print "New Jersey";
-		
+        
+        case "newYork":
+            $sql = mysqli_fetch_array(rabbitPopulate());
+            
+            print "Total Cases: " . $sql["ny_cases"]. 
+              "  Total Stats: " . $sql["ny_deaths"]."<br>";
+			  break;
+			  print "New York";
+
 		default:
-			print"It worked";
-		}
+			print"Default";
+	    }
 		?>
-		
     </div>
 
   </div>
