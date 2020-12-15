@@ -179,7 +179,7 @@
         case "noSelection":
             $sql = rabbitPopulate();
 
-			$sqlarray = mysqli_fetch_array($sql));
+			$sqlarray = mysqli_fetch_array($sql);
 		  
 			print "Total Cases: " . $sqlarray["totals_cases"]. 
               "  Total Stats: " . $sqlarray["total_deaths"]."<br>";
@@ -190,7 +190,7 @@
 		case "newJersey":
 			$sql = rabbitPopulate();
 
-            $sqlarray = mysqli_fetch_array($sql));
+            $sqlarray = mysqli_fetch_array($sql);
             
 			print "Total Cases: " . $sqlarray["nj_cases"]. 
               "  Total Stats: " . $sqlarray["nj_deaths"]."<br>";
@@ -200,7 +200,7 @@
         case "newYork":
             $sql = rabbitPopulate();
 
-            $sqlarray = mysqli_fetch_array($sql));
+            $sqlarray = mysqli_fetch_array($sql);
             
             print "Total Cases: " . $sqlarray["ny_cases"]. 
               "  Total Stats: " . $sqlarray["ny_deaths"]."<br>";
@@ -209,10 +209,12 @@
 
         default:
             print"Default";
-            
-            $sql = rabbitPopulate();
 
-			$sqlarray = mysqli_fetch_array($sql));
+            $dbconnect = new mysqli('10.1.0.5','root','it490Group2!!!','user_credentials');
+
+            $query = mysqli_query($dbconnect,"SELECT * FROM corona_stats ORDER BY my_timestamp DESC LIMIT 1");
+
+            $sqlarray = mysqli_fetch_array($query);
 		  
 			print "Total Cases: " . $sqlarray["totals_cases"]. 
               "  Total Stats: " . $sqlarray["total_deaths"]."<br>";
