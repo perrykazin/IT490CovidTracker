@@ -23,7 +23,7 @@
 		<i class="fa fa-caret-down"></i>
 		</button>
 		<div class="dropdown-content">
-			<form action="">
+			<form action="" method="POST">
 				<select name="state" id="state" onchange="showCovidData(this.value); javascript:this.form.submit()">
 				<option value="noSelection">Select a State</option>
 				<option value="newJersey">New Jersey</option>
@@ -188,7 +188,7 @@
 		var xhttp;
 		if (str == "")
 		{
-			document.getElementById("stateName").innerHTML = "";
+			document.getElementById("states").innerHTML = "";
 			return;
 		}
 		
@@ -212,7 +212,9 @@
 	  
 	  include 'trackerclient.php';
 	  
-	  switch ($_POST["value"])
+	  $demonstrate = "noSelection";
+	  
+	  switch ($demonstrate)
 	  {
 		case "noSelection":
 			$sql = mysqli_fetch_array(rabbitPopulate());
@@ -233,7 +235,6 @@
 		
 		default:
 			print"It worked";
-		}
 		}
 		?>
     </div>
