@@ -24,7 +24,7 @@
 		</button>
 		<div class="dropdown-content">
 			<form action="">
-				<select name="state" id="state" onchange="javascript:this.form.submit()">
+				<select name="state" id="state" onchange="showCovidData(this.value); javascript:this.form.submit()">
 				<option value="noSelection">Select a State</option>
 				<option value="newJersey">New Jersey</option>
 				<option value="newYork">New York</option>
